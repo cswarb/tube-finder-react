@@ -1,0 +1,33 @@
+.loading-area {
+	align-items: center;
+	background-color: $tfl-blue;
+	display: flex;
+	flex-flow: column nowrap;
+	height: 100vh;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	&__badge {
+		animation: bounce 2s ease-in-out 0s infinite normal both running;
+		color: $white;
+		display: block;
+		margin-bottom: 1rem;
+		&--svg {
+			max-width: 30rem;
+			> #train {
+				&__body {
+
+				}
+				&__headlights {
+					animation: flashInOut 2s ease-in-out 0s infinite normal both running;
+				}
+			}
+		}	  
+	}
+	&__text {
+		color: $white;
+		font-size: 1.5rem;
+    	position: absolute;
+		transform: translateY(15vh);
+	}
+}

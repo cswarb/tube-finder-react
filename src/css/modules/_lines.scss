@@ -1,0 +1,178 @@
+[line-list] {
+	@for $i from 1 through length($lines) {
+		&:nth-child(#{$i}) {
+			.undergroundline__line--loaded {
+				&:before {
+					background-color: lighten(#113b92, ($i * 4));
+				}
+			}
+			.undergroundline__line {
+				animation-delay: ($i * (0.15)) + s;
+			}
+		}
+	}
+}
+
+.undergroundline {
+    align-items: center;
+	display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin: 2rem 0 0 0;
+    overflow: hidden;
+    width: 100%;
+    @media screen and (min-width: 30rem) {
+		margin: 2rem 0 0 0;
+	}
+	&__header {
+		width: 100%;
+	}
+	&__title {
+		font-size: 2rem;
+		margin: 2rem 2rem 1rem 2rem;
+	}
+	&__block {
+		align-items: center;
+		display: flex;
+		flex-flow: row nowrap;
+		flex: 100%;
+		justify-content: space-between;
+		&__more-info {
+			display: none;
+		}
+		&--expanded {
+			display: block;
+		}
+		&__content {
+			color: $white;
+			font-family: $font-stack-sailec;
+		    font-size: 1.3rem;
+			margin: 3rem 0 0 0;
+		    word-break: break-word;
+		}
+	}
+	&__wrapper {
+		display: flex;
+	}
+	&__lines {
+		display: block;
+		margin: 0;
+		min-height: 10rem;
+		position: relative;
+		width: 100%;
+	}
+	&__line {
+	    align-items: center;
+		animation: fadeInSoftDown 0.5s ease-in-out forwards;
+		background-color: $black;
+		color: $white;
+		display: block;
+	    flex-flow: row nowrap;
+	    margin: -1px 0;
+		opacity: 0;
+		padding: 2rem 1.5rem;
+		word-break: break-all;
+	    width: 100%;
+		&.expanded {
+			height: auto;
+		}
+		&--loaded {
+			&:before {
+			    align-items: center;
+			    animation: fadeOutUnderlay 2s ease-in-out forwards;
+			    color: $black;
+				background-color: $tfl-blue;
+				content: "";
+				display: flex;
+				height: 100%;
+			    justify-content: center;
+				left: 0;
+				opacity: 1;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+		}
+		@media screen and (min-width: 30rem) {
+			padding: 3rem 4rem;
+		}
+		@each $line, $color in $lines {
+			&--#{$line} {
+				background-color: $color;
+			}
+		}
+		&--alt {
+			@each $line, $color in $alt-lines {
+				&--#{$line} {
+					background-color: $color;
+				}
+			}
+		}
+		&__name {
+			color: $white;
+			flex: 2;
+			font-family: $font-stack-demi;
+			font-size: 1.5rem;
+			margin-right: 0.5rem;
+			margin: 0;
+			text-transform: capitalize;
+			word-break: break-word;
+			@media screen and (min-width: 30rem) {
+				// max-width: 50%;
+				font-size: 3rem;
+			}
+		}
+		&__status {
+			color: $white;
+			display: flex;
+			flex: 1;
+			font-family: $font-stack-demi;
+			margin: 0;
+			margin: 0;
+			text-transform: uppercase;
+    		flex-flow: column nowrap;
+			&__badge, &__text {
+				color: $white;
+				display: inline-block;
+				margin: 0;
+				font-family: $font-stack-demi;
+			}
+			&__text {
+				font-size: 0.8rem;
+				word-break: break-word;
+				@media screen and (min-width: 60rem) {
+					font-size: 1.25rem;
+				}
+			}
+			&--bold {
+				font-family: $font-stack-demi;
+			}
+		}
+		&__loadingicon {
+			display: none;
+			&--loading {
+				display: block;
+			}
+		}
+		&__toggle {
+		    align-items: center;
+		    display: flex;
+			flex: 0.4;
+		    justify-content: center;
+		    &__helper {
+		    	color: $white;
+		    	display: inline-block;
+		    	font-family: $font-stack-demi;
+		    	font-size: 1rem;
+		    	margin-right: 0.5rem;
+		    }
+			&icon {
+				height: 1.5rem;
+				width: 1.5rem;
+				&--expanded {
+					transform: rotate(180deg);
+				}
+			}
+		}
+	}
+}

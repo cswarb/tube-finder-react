@@ -1,0 +1,77 @@
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+::selection {
+	background-color: darken($white, 5%);
+	color: $black;
+}
+
+a:focus, button:focus, input:focus {
+	outline: 3px solid #ffbf47;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	&.dark {
+		color: $tfl-blue;
+	}
+	&:visited {
+		color: white;
+	}
+}
+
+body {
+	background-color: $background-grey;
+	font-family: $font-stack-demi;
+	margin:  0;
+	min-height: 100vh;
+	padding: 0;
+	width: 100%;
+	&.fixed {
+		left:0;
+		position: fixed;
+		top:0;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+p {
+    color: #5d6065;
+    font-family: $font-stack-sailec;
+    font-size: 1.125rem;
+	letter-spacing: -0.1px;
+    line-height: 1.75;
+    &.grey {
+    	color: #8c9396;
+    }
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	> li {
+		line-height: 1.75;
+		margin: 0.5rem 0;
+	}
+}
+
+pre {
+	background-color: #eceef1;
+	display: block;
+	padding: 15px;
+}
+
+form {
+	height: auto;
+	width: 100%;
+}

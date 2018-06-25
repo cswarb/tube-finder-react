@@ -1,0 +1,11 @@
+.footer {
+	background-color: $black;
+	color: $white;
+	display: flex;
+    justify-content: space-between;
+	&__text {
+		font-family: $font-stack-sailec;
+		margin: 0;
+		padding: 2rem;
+	}
+}

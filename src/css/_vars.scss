@@ -1,0 +1,52 @@
+$background-grey: #EFEFEF;
+$background-lighter-grey: #EAEAEA;
+$black: #000000;
+$white: #FFFFFF;
+
+$tfl-blue: #113B92;
+
+$lines: (
+	bakerloo: #C37428,
+	central: #ED3022,
+	circle: #F7CF3D,
+	district: #00853F,
+	hammersmith-city: #F5A3B7,
+	jubilee: #939BA1,
+	metropolitan: #96005D,
+	northern: #221E1F,
+	piccadilly: #1A3E93,
+	victoria: #009CDB,
+	waterloo-city: #86CEBC,
+	overground: #FF6600,
+	emirates: #E94E66,
+	dlr: #00AFAD,
+	tram: #8AD243,
+	tflrail: $tfl-blue
+);
+
+$alt-lines: (
+	bakerloo: #EAB18C,
+	central: #EF8253,
+	circle: #FF5B44,
+	district: #CE2737,
+	hammersmith-city: #7D002F,
+	jubilee: #54002F,
+	metropolitan: #2E102A,
+	northern: #1B131A,
+	piccadilly: #1A1F2B,
+	victoria: #4B5F6D,
+	waterloo-city: #D0E4F2,
+	overground: #85A5CC,
+	emirates: #4A6491,
+	dlr: #30395C,
+	tflrail: #1A1F2B,
+	tram: #0B0F19
+);
+
+$font-stack-light: "P22-Light", sans-serif;
+$font-stack-book: "P22-Book", sans-serif;
+$font-stack-medium: "P22-Medium", sans-serif;
+$font-stack-demi: "P22-Demi", sans-serif;
+$font-stack-noto: "Noto Sans", sans-serif;
+$font-stack-sailec: "SailecMedium", sans-serif;
+$font-stack-apercu: "ApercuMedium", sans-serif;

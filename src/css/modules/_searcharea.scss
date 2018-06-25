@@ -1,0 +1,56 @@
+[search] {
+	display: block;
+	margin-bottom: 3rem;
+	width: 100%;
+	.searcharea {
+		&__wrapper {
+			margin: 0 auto;
+		    @media screen and (min-width: 30rem) {
+				width: 85%;
+			}
+			@media screen and (min-width: 60rem) {
+				width: 45%;
+			}
+		}
+		&__helper {
+			min-height: 3rem;
+			&__text {
+				margin: 0;
+				padding-top: 1px;//font bug?
+			}
+		}
+		&__input {
+			border: 0;
+			font-family: $font-stack-sailec;
+			font-size: 2rem;
+			height: 100%;
+			padding: 0.5rem 4rem 0.5rem 1rem;
+			text-transform: capitalize;
+			width: 100%;
+			@media screen and (min-width: 60rem) {
+				padding: 1.4rem 5rem 1rem 1rem;
+			}
+			&__clear {
+				background: url("/assets/img/clear.svg");
+				background-repeat: no-repeat;
+				background-position: center;
+				height: 25px;
+				position: absolute;
+				right: 5%;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 25px;
+				z-index: 3;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+			&__wrapper {
+			    animation: fadeInSoftDown 0.5s ease-in-out forwards;
+				background-color: $white;
+			    height: 5rem;
+			    width: 100%;
+			}
+		}
+	}
+}
