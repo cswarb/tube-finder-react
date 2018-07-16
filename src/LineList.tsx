@@ -1,20 +1,67 @@
 import * as React from "react";
+import axios from "axios";
+import * as AppConstants from "./app-constants";
+import Line from "./Line";
 
-class LineList extends React.Component {
-    public name: string = "Test";
+class LineList extends React.Component<any, any> {
+    public lineData: any = [];
+    public hello: any = [];
 
     constructor(props: any) {
         super(props);
+        this.state = {
+            hello: {},
+            lineData: [],
+            lineDataTest: []
+        }
     }
 
     public componentDidMount() {
-        
+        this.getAllLineData();
+    }
+
+    public getTube(type: string): Promise<any> {
+        const url = "apiBaseUrl";
+        return axios.get(AppConstants.default[url] + `Line/Mode/${type}/Status`);
+    }
+
+    public getAllLineData() {
+        const promises = [this.getTube("tube"), this.getTube("overground"), this.getTube("dlr")];
+
+        Promise.all(promises).then((res: any) => {
+            this.concatResults(res);
+        }).catch((err: any) => {
+            console.log("something went wrong: ", err);
+        });
+    }
+
+    public concatResults(res: any) {
+        if (!res) {
+            return;
+        };
+
+        const g: any = [];
+        res.forEach((theData: any, index: any) => {
+            theData.data.reduce((acc: any, moreData: any) => {
+                g.push(moreData)
+                return moreData;
+            }, []);
+        });
+        console.log(g, "g");
+        this.setState({
+            lineDataTest: g
+        });      
     }
 
     public render() {
         return (
             <div>
-                Line list
+                {this.state.lineDataTest.map((listValue: any, index: number) => {
+                    return <Line key={index.toString()} linename={listValue.name} modename={listValue.modeName}></Line>;
+                })};
+                {/* {this.state.lineData.map((listValue: any, index: number) => {
+                    return <Line key={index.toString()} linename={listValue.name} modename={listValue.modeName}></Line>;
+                })}; */}
             </div>
         );
     }
