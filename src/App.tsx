@@ -18,11 +18,11 @@ class App extends React.Component {
         return (
             <div id="container">
                 <Link to="/line-list" className="navigation">
-                    {this.name}
+                    Line List
                 </Link>
                 
                 <Link to="/line-search" className="navigation">
-                    {this.name}
+                    Line Search
                 </Link>
 
                 

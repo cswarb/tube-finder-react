@@ -42,26 +42,24 @@ class LineList extends React.Component<any, any> {
 
         const g: any = [];
         res.forEach((theData: any, index: any) => {
-            theData.data.reduce((acc: any, moreData: any) => {
+            theData.data.forEach((moreData: any) => {
                 g.push(moreData)
-                return moreData;
-            }, []);
+            });
         });
-        console.log(g, "g");
+
         this.setState({
             lineDataTest: g
-        });      
+        });
+        console.log(g);
+        
     }
 
     public render() {
         return (
             <div>
                 {this.state.lineDataTest.map((listValue: any, index: number) => {
-                    return <Line key={index.toString()} linename={listValue.name} modename={listValue.modeName}></Line>;
+                    return <Line key={index.toString()} status={listValue.lineStatuses} lineid={listValue.id} linename={listValue.name} modename={listValue.modeName}></Line>;
                 })};
-                {/* {this.state.lineData.map((listValue: any, index: number) => {
-                    return <Line key={index.toString()} linename={listValue.name} modename={listValue.modeName}></Line>;
-                })}; */}
             </div>
         );
     }

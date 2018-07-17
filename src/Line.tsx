@@ -11,48 +11,45 @@ class Line extends React.Component<any, any> {
     }
 
     public componentDidMount() {
-
+        
     }
 
     public toggleOpen() {
         this.setState({
-            opened: this.state.opened ? true : false
+            opened: this.state.opened ? false : true
         });
     }
 
     public getSanitizedLine(line: any): string {
-        if (line.modeName === "tube") {
-            return line.id.replace(/-/g, "");
+        if (line.modename === "tube") {
+            return line.lineid.replace(/-/g, "");
         } else {
-            return line.modeName;
+            return line.modename;
         };
     }
 
     public render() {
-        console.log(this.props);
-        
         return (
-            <article className={`undergroundline__line undergroundline__line--${this.getSanitizedLine(this.props.modename)}`}>
+            <article className={`undergroundline__line undergroundline__line--${this.getSanitizedLine(this.props)}`}>
                 <div className="undergroundline__block">
                     <h1 className="undergroundline__line__name">{this.props.linename}</h1>
                     <div className="undergroundline__line__status">
-                        <p className="undergroundline__line__status__text">
-                            <span>Desc - {`${this.state.opened}`}</span>
-                            <br />
-                        </p>
+                        {this.props.status.map((value: any, index: number) => {
+                            return <p className="undergroundline__line__status__text" key={index}>{value.statusSeverityDescription}</p>
+                        })}
                     </div>
                         <div className="undergroundline__line__toggle">
                             <button onClick={this.toggleOpen} type="button" data-alt="toggle switch" className="button button__icon" data-format="svg" role="button">
                             <p className="button__icon__text">More Detail</p>
-                            <img src="./assets/img/toggle.svg" className="button undergroundline__line__toggleicon icon" alt="toggle switch"/>
+                            <img src="/assets/img/toggle.svg" className="button undergroundline__line__toggleicon icon" alt="toggle switch"/>
                             <img src="/assets/img/loading.svg" alt="loading" className="undergroundline__line__loadingicon"/>
                         </button>
-                    </div >
+                    </div>
                 </div>
-                    <div className="undergroundline__block undergroundline__block__more-info">
-                    <p className="undergroundline__block__content">
-                        
-                    </p>
+                <div className={`undergroundline__block undergroundline__block__more-info ${this.state.opened ? 'undergroundline__block--expanded' : ''}`}>
+                    {this.props.status.map((value: any, index: number) => {
+                        return <p className="undergroundline__block__content" key={index}>{value.reason}</p>
+                    })}
                 </div>
             </article>
             
