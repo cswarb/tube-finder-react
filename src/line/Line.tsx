@@ -1,5 +1,6 @@
 import * as React from "react";
-import * as AppConstants from "./app-constants";
+import * as AppConstants from "../app-constants";
+import Toggle from "./toggle/Toggle";
 
 class Line extends React.Component<any, any> {
     constructor(props: any) {
@@ -12,6 +13,17 @@ class Line extends React.Component<any, any> {
 
     public componentDidMount() {
         
+    }
+
+    public hasAdditionalDataToShow(): any {
+        const hasDisruption = this.props.status.some((lineStatus: any) => {
+            return lineStatus.hasOwnProperty("disruption") && lineStatus.disruption;
+        });
+        return hasDisruption;
+    }
+
+    public isFuture(): boolean {
+        return !!true;
     }
 
     public toggleOpen() {
@@ -38,13 +50,7 @@ class Line extends React.Component<any, any> {
                             return <p className="undergroundline__line__status__text" key={index}>{value.statusSeverityDescription}</p>
                         })}
                     </div>
-                        <div className="undergroundline__line__toggle">
-                            <button onClick={this.toggleOpen} type="button" data-alt="toggle switch" className="button button__icon" data-format="svg" role="button">
-                            <p className="button__icon__text">More Detail</p>
-                            <img src="/assets/img/toggle.svg" className="button undergroundline__line__toggleicon icon" alt="toggle switch"/>
-                            <img src="/assets/img/loading.svg" alt="loading" className="undergroundline__line__loadingicon"/>
-                        </button>
-                    </div>
+                    <Toggle toggleOpen={this.toggleOpen} hasDisruption={this.hasAdditionalDataToShow()}></Toggle>
                 </div>
                 <div className={`undergroundline__block undergroundline__block__more-info ${this.state.opened ? 'undergroundline__block--expanded' : ''}`}>
                     {this.props.status.map((value: any, index: number) => {
@@ -52,7 +58,6 @@ class Line extends React.Component<any, any> {
                     })}
                 </div>
             </article>
-            
         );
     }
 }

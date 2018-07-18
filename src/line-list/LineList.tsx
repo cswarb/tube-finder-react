@@ -1,7 +1,7 @@
 import * as React from "react";
 import axios from "axios";
-import * as AppConstants from "./app-constants";
-import Line from "./Line";
+import * as AppConstants from "../app-constants";
+import Line from "../line/Line";
 
 class LineList extends React.Component<any, any> {
     public lineData: any = [];
@@ -10,9 +10,7 @@ class LineList extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            hello: {},
-            lineData: [],
-            lineDataTest: []
+            lineData: []
         }
     }
 
@@ -25,41 +23,46 @@ class LineList extends React.Component<any, any> {
         return axios.get(AppConstants.default[url] + `Line/Mode/${type}/Status`);
     }
 
-    public getAllLineData() {
+    public async getAllLineData() {
         const promises = [this.getTube("tube"), this.getTube("overground"), this.getTube("dlr")];
 
-        Promise.all(promises).then((res: any) => {
-            this.concatResults(res);
-        }).catch((err: any) => {
+        const result = await Promise.all(promises)
+        .catch((err: any) => {
             console.log("something went wrong: ", err);
         });
+        
+        this.setState({
+            lineData: this.concatRes(result)
+        }); 
     }
 
-    public concatResults(res: any) {
-        if (!res) {
-            return;
+    public concatRes(res: any) {
+        if (!res || !res.length) {
+            return [];
         };
 
-        const g: any = [];
+        const concatLineData: any = [];
         res.forEach((theData: any, index: any) => {
             theData.data.forEach((moreData: any) => {
-                g.push(moreData)
+                concatLineData.push(moreData)
             });
         });
 
-        this.setState({
-            lineDataTest: g
-        });
-        console.log(g);
-        
+        return concatLineData;     
+
+        // let arr = [];
+        // lineArray.map((value, iterator) => {
+        //     arr = arr.concat(value);
+        // });
+        // return arr;
     }
 
     public render() {
         return (
             <div>
-                {this.state.lineDataTest.map((listValue: any, index: number) => {
+                {this.state.lineData.map((listValue: any, index: number) => {
                     return <Line key={index.toString()} status={listValue.lineStatuses} lineid={listValue.id} linename={listValue.name} modename={listValue.modeName}></Line>;
-                })};
+                })}
             </div>
         );
     }

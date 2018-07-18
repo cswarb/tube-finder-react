@@ -882,12 +882,9 @@ form {
     .popup__close:hover {
       cursor: pointer; }
 
-[filters] {
-  display: block;
-  width: 100%; }
-  [filters] .dataselection {
-    display: flex;
-    flex-flow: row nowrap; }
+.dataselection {
+  display: flex;
+  flex-flow: row nowrap; }
 
 [search-results] {
   display: block;
