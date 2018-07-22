@@ -1,4 +1,5 @@
 import * as React from "react";
+import { NavLink } from "react-router-dom";
 
 class Context extends React.Component {
     public name: string = "Test";
@@ -14,8 +15,8 @@ class Context extends React.Component {
     public render() {
         return (
             <section className="dataselection">
-                <button type="button" className="dataselection__filter button button__tab button__filter">Lines</button>
-                <button type="button" className="dataselection__filter button button__tab button__filter">Stations</button >
+                <NavLink className="dataselection__filter button button__tab button__filter" to='/line-list' activeClassName="button__filter--selected">Lines</NavLink>
+                <NavLink className="dataselection__filter button button__tab button__filter" to='/line-search' activeClassName="button__filter--selected">Stations</NavLink>
             </section>
         );
     }

@@ -135,7 +135,7 @@ a {
   a.dark {
     color: #113B92; }
   a:visited {
-    color: white; }
+    color: inherit; }
 
 body {
   background-color: #EFEFEF;
@@ -483,6 +483,8 @@ form {
   .undergroundline__title {
     font-size: 2rem;
     margin: 2rem 2rem 1rem 2rem; }
+  .undergroundline__content {
+    margin: 2rem; }
   .undergroundline__block {
     align-items: center;
     display: flex;
@@ -974,10 +976,12 @@ form {
     cursor: pointer; }
   .button__filter {
     background-color: #e2e2e2;
+    color: #000000;
     flex: 1;
     font-family: "SailecMedium", sans-serif;
     font-size: 1rem;
     padding: 2rem 2rem;
+    text-align: center;
     text-transform: uppercase; }
     @media screen and (min-width: 60rem) {
       .button__filter {

@@ -11,10 +11,12 @@
 	}
 	&__filter {
 		background-color: darken($background-grey, 5%);
+		color: #000000;
 		flex: 1;
 		font-family: $font-stack-sailec;
 		font-size: 1rem;
 		padding: 2rem 2rem;
+		text-align: center;
 		text-transform: uppercase;
 		@media screen and (min-width: 60rem) {
 			font-size: 1.8rem;

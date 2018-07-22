@@ -22,8 +22,8 @@ class Line extends React.Component<any, any> {
         return hasDisruption;
     }
 
-    public isFuture(): boolean {
-        return !!true;
+    public isFuture(validaityPeriodArr: any): boolean {
+        return validaityPeriodArr.length;
     }
 
     public toggleOpen() {
@@ -33,21 +33,26 @@ class Line extends React.Component<any, any> {
     }
 
     public getSanitizedLine(line: any): string {
-        if (line.modename === "tube") {
+        // Return the santized tube line. Anything other than a tube should return the mode
+        if (this.isTube(line.modename)) {
             return line.lineid.replace(/-/g, "");
         } else {
             return line.modename;
         };
     }
 
+    public isTube(modeType: string): boolean {
+        return modeType === "tube";
+    }
+
     public render() {
         return (
-            <article className={`undergroundline__line undergroundline__line--${this.getSanitizedLine(this.props)}`}>
+            <article className={`undergroundline__line undergroundline__line--${this.getSanitizedLine(this.props)} ${this.props.lineid ? "undergroundline__line--loaded" : ""}`}>
                 <div className="undergroundline__block">
                     <h1 className="undergroundline__line__name">{this.props.linename}</h1>
                     <div className="undergroundline__line__status">
                         {this.props.status.map((value: any, index: number) => {
-                            return <p className="undergroundline__line__status__text" key={index}>{value.statusSeverityDescription}</p>
+                            return <p className="undergroundline__line__status__text" key={index}>{this.isFuture(value.validityPeriods) ? "Upcoming - " : ""} {value.statusSeverityDescription}</p>;
                         })}
                     </div>
                     <Toggle toggleOpen={this.toggleOpen} hasDisruption={this.hasAdditionalDataToShow()}></Toggle>
