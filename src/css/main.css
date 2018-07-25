@@ -939,13 +939,13 @@ form {
     .result__helper > a:visited {
       color: #113B92; }
 
-[emergency-delays] {
+.delays {
   display: block;
   margin: 4rem auto;
   max-width: 38rem;
   padding: 0 1rem;
   width: 100%; }
-  [emergency-delays] .delay__wrapper {
+  .delays .delay__wrapper {
     background: url("/assets/img/warning.svg") #FFFFFF;
     background-position: 5% 50%;
     background-repeat: no-repeat;

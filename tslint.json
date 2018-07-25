@@ -9,7 +9,11 @@
   "rules": {
     "no-console": false,
     "no-empty": false,
-    "ordered-imports": false
+    "ordered-imports": false,
+    "array-type": [
+      true,
+      "generic"
+    ]
   }
 }
 //"tslint-react"

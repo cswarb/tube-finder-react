@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Navigation from "../navigation/Navigation";
 import Context from "../context/Context";
 import LineList from "../line-list/LineList";
+import Delay from "../delay/Delay";
 
 class LineContainer extends React.Component {
     public listType: string = "Lines";
@@ -22,7 +23,7 @@ class LineContainer extends React.Component {
             <article>
                 <Context></Context>
 
-                {/* <div emergency-delays></div> */}
+                <Delay></Delay>
 
                 <section className="undergroundline">
                     <div className="undergroundline__lines">

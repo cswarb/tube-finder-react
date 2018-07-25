@@ -4,7 +4,9 @@ export class TFLModeTypes {
     private allModeTypes: any = [
         "tube",
         "overground",
-        "dlr"
+        "dlr",
+        "tflrail",
+        "tram"
     ];
 
     constructor() {
