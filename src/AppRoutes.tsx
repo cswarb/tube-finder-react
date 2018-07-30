@@ -7,6 +7,7 @@ import Wildcard from "./wildcard/Wildcard";
 import { Redirect } from "react-router";
 import { Router } from "react-router-dom";
 import LineContainer from "./line-container/LineContainer";
+import LineSearch from "./line-search/LineSearch";
 
 // import React from "react";
 // import { Route, Switch } from "react-router";
@@ -19,7 +20,7 @@ export default (
                 <Redirect to="/line-list"/>
             </Route>
             <Route exact path="/line-list" component={LineContainer} />
-            <Route exact path="/line-search" component={LineList} />
+            <Route exact path="/line-search" component={LineSearch} />
             <Route path="*" component={Wildcard} />
         </Switch>
     // </Router>

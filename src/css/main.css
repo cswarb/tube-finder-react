@@ -659,24 +659,24 @@ form {
         .undergroundline__line__toggleicon--expanded {
           transform: rotate(180deg); }
 
-[search] {
+.autocomplete {
   display: block;
   margin-bottom: 3rem;
   width: 100%; }
-  [search] .searcharea__wrapper {
+  .autocomplete .searcharea__wrapper {
     margin: 0 auto; }
     @media screen and (min-width: 30rem) {
-      [search] .searcharea__wrapper {
+      .autocomplete .searcharea__wrapper {
         width: 85%; } }
     @media screen and (min-width: 60rem) {
-      [search] .searcharea__wrapper {
+      .autocomplete .searcharea__wrapper {
         width: 45%; } }
-  [search] .searcharea__helper {
+  .autocomplete .searcharea__helper {
     min-height: 3rem; }
-    [search] .searcharea__helper__text {
+    .autocomplete .searcharea__helper__text {
       margin: 0;
       padding-top: 1px; }
-  [search] .searcharea__input {
+  .autocomplete .searcharea__input {
     border: 0;
     font-family: "SailecMedium", sans-serif;
     font-size: 2rem;
@@ -685,9 +685,9 @@ form {
     text-transform: capitalize;
     width: 100%; }
     @media screen and (min-width: 60rem) {
-      [search] .searcharea__input {
+      .autocomplete .searcharea__input {
         padding: 1.4rem 5rem 1rem 1rem; } }
-    [search] .searcharea__input__clear {
+    .autocomplete .searcharea__input__clear {
       background: url("/assets/img/clear.svg");
       background-repeat: no-repeat;
       background-position: center;
@@ -698,9 +698,9 @@ form {
       transform: translateY(-50%);
       width: 25px;
       z-index: 3; }
-      [search] .searcharea__input__clear:hover {
+      .autocomplete .searcharea__input__clear:hover {
         cursor: pointer; }
-    [search] .searcharea__input__wrapper {
+    .autocomplete .searcharea__input__wrapper {
       animation: fadeInSoftDown 0.5s ease-in-out forwards;
       background-color: #FFFFFF;
       height: 5rem;

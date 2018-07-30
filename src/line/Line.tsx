@@ -23,7 +23,9 @@ class Line extends React.Component<any, any> {
     }
 
     public isFuture(validaityPeriodArr: any): boolean {
-        return validaityPeriodArr.length;
+        return validaityPeriodArr.some((validityPeriod: any) => {
+            return validityPeriod.isNow;
+        });        
     }
 
     public toggleOpen() {

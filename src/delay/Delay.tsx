@@ -45,11 +45,11 @@ class Delay extends React.Component<any, any> {
         };
 
         const concatDelayData: any = [];
-        res.forEach((theData: any, index: any) => {
-            if (!theData.data.length) { return };
-            theData.data.forEach((moreData: any) => {
+        res.forEach((delyData: any, index: any) => {
+            if (!delyData.data.length) { return };
+            delyData.data.forEach((singleDelay: any) => {
                 concatDelayData.push(
-                    new DelayModel(moreData)
+                    new DelayModel(singleDelay)
                 );
             });
         });
